@@ -32,6 +32,11 @@ func main() {
 	strs := []string{"a", "b"}
 	fmt.Println(strs)
 
+	for xx := range strs {
+		fmt.Println(strs[xx])
+	}
+
+
 	fmt.Println(gcd(10, 15))
 
 	file, err := os.Open("README.md")

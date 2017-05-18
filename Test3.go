@@ -9,7 +9,7 @@ const (
 
 type NewVar float64
 
-func (v NewVar) String() string{
+func (v NewVar) String() string {
 	fmt.Printf("new value is %.4f\n", v)
 	return fmt.Sprintf("new value is %.4f", v)
 }
