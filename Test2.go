@@ -32,10 +32,9 @@ func main() {
 	strs := []string{"a", "b"}
 	fmt.Println(strs)
 
-	for xx := range strs {
-		fmt.Println(strs[xx])
+	for xx, yy := range strs {
+		fmt.Println(xx, yy)
 	}
-
 
 	fmt.Println(gcd(10, 15))
 
