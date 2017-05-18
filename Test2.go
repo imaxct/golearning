@@ -1,8 +1,18 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 /* var */
+
+func gcd(x, y int) int {
+	for y != 0 {
+		x, y = y, x%y
+	}
+	return x
+}
 
 func main() {
 	var s string
@@ -21,4 +31,12 @@ func main() {
 
 	strs := []string{"a", "b"}
 	fmt.Println(strs)
+
+	fmt.Println(gcd(10, 15))
+
+	file, err := os.Open("README.md")
+	if err == nil {
+		fmt.Println("success!")
+		file.Close()
+	}
 }
