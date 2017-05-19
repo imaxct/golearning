@@ -43,4 +43,6 @@ func main() {
 		fmt.Println("success!")
 		file.Close()
 	}
+
+	fmt.Fprint(os.Stdout, "test")
 }

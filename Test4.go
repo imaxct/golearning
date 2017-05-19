@@ -14,21 +14,26 @@ var arr [200]int = func() (arr [200]int) {
 
 func main() {
 	fmt.Println(arr[20])
+
 	if f, err := os.Open("README.md"); err == nil {
-		buf := make([]byte, 10)
-		n, r := f.Read(buf);
-		if (r == nil){
+		defer f.Close()
+		defer fmt.Println("done")
+
+		//buf := make([]byte, 10)
+		var buf [200]byte
+		n, r := f.Read(buf[0:20])
+		if r == nil {
 			fmt.Println(n)
 			if n > 0 {
 				ss := string(buf)
 				fmt.Println(ss)
-			}else {
+			} else {
 				fmt.Println("empty file")
 			}
-		}else {
+		} else {
 			fmt.Println(r.Error())
 		}
-	}else {
+	} else {
 		fmt.Println(err.Error())
 	}
 }
