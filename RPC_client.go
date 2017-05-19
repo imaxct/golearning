@@ -1,10 +1,10 @@
 package main
 
 import (
-	"net/rpc"
-	"log"
-	"golearning/server"
 	"fmt"
+	"golearning/server"
+	"log"
+	"net/rpc"
 )
 
 func main() {

@@ -26,5 +26,3 @@ func (t *Arith) Devide(args *Args, quo *Quotient) error {
 	quo.Rem = args.A % args.B
 	return nil
 }
-
-
