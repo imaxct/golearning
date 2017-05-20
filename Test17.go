@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"net/http"
 	"io/ioutil"
+	"net/http"
 )
 
 func main() {
@@ -17,6 +17,6 @@ func main() {
 		defer r.Body.Close()
 		body, err := ioutil.ReadAll(r.Body)
 		c <- string(body)
-	}("https://golang.org/",res)
+	}("https://golang.org/", res)
 	fmt.Println(<-res)
 }
