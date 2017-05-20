@@ -1,16 +1,15 @@
 package main
 
 import (
-	"net/http"
 	"fmt"
 	"log"
+	"net/http"
 )
 
 type Hello struct {
-
 }
 
-func (h Hello) ServeHTTP(w http.ResponseWriter, r *http.Request)  {
+func (h Hello) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, "Hello!")
 }
 

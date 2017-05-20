@@ -19,11 +19,11 @@ var m = map[string]Vertex{
 }
 
 func (v *Vertex) Abs() float64 {
-	return math.Sqrt(v.Lat * v.Lat + v.Long * v.Long)
+	return math.Sqrt(v.Lat*v.Lat + v.Long*v.Long)
 }
 
 func main() {
 	fmt.Println(m)
-	ff :=m["xx"]
+	ff := m["xx"]
 	fmt.Println(ff.Abs())
 }

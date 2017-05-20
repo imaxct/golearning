@@ -5,7 +5,6 @@ import (
 	"runtime"
 )
 
-
 func main() {
 	fmt.Println(runtime.GOOS)
 	p := make([]int, 5)

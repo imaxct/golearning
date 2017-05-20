@@ -15,11 +15,11 @@ func (rd rot13Reader) Read(b []byte) (int, error) {
 	for i := 0; i < n; i++ {
 		if b[i] >= 'A' && b[i] <= 'M' {
 			b[i] += 13
-		}else if b[i] >= 'N' && b[i] <= 'Z' {
+		} else if b[i] >= 'N' && b[i] <= 'Z' {
 			b[i] -= 13
 		} else if b[i] >= 'a' && b[i] <= 'm' {
 			b[i] += 13
-		}else if b[i] >= 'n' && b[i] <= 'z' {
+		} else if b[i] >= 'n' && b[i] <= 'z' {
 			b[i] -= 13
 		}
 	}
