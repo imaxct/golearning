@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func goTest(ch chan int) {
-	for i := 0; i<20; i++ {
+	for i := 0; i < 20; i++ {
 		ch <- i
 	}
 	close(ch)
