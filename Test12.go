@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
+	"image"
 	"log"
 	"net/http"
-	"image"
 )
 
 type String string

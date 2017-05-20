@@ -1,13 +1,13 @@
 package main
 
 import (
-	"time"
 	"fmt"
+	"time"
 )
 
-func say(s string, c chan int){
+func say(s string, c chan int) {
 
-	for i := 0; i<=10; i++ {
+	for i := 0; i <= 10; i++ {
 		time.Sleep(100 * time.Millisecond)
 		fmt.Println(s)
 	}
