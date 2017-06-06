@@ -1,9 +1,14 @@
 package main
 
+import (
+	"crypto/md5"
+	"fmt"
+	"encoding/hex"
+)
+
 /* just basic */
 func main() {
-	for a := 1; a < 10; a++ {
-		println(a)
-	}
-	println("hello world!")
+	s := md5.New()
+	x := s.Sum([]byte("abcd"))
+	fmt.Println(hex.EncodeToString(x))
 }
