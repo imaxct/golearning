@@ -1,27 +1,32 @@
 package main
 
 import (
-	"fmt"
+	"crypto/md5"
 	"database/sql"
+	"encoding/hex"
+	"fmt"
 	_ "github.com/go-sql-driver/mysql"
 	"log"
-	"encoding/hex"
-	"crypto/md5"
 	"net/http"
 )
 
 type User struct {
-	id int
-	name string
+	id       int
+	name     string
 	password string
-	email string
+	email    string
+}
+
+func (u User) String() string {
+	return fmt.Sprintf("user(id = %v, name = %v, password = %v, email = %v)",
+		u.id, u.name, u.password, u.email)
 }
 
 func insert(db *sql.DB) {
 	Hash := md5.New()
 	p := hex.EncodeToString(Hash.Sum([]byte("asdf")))
-	SQL := fmt.Sprintf("INSERT INTO test_user (`id`, `name`, `password`, `email`) " +
-			"VALUES (1, 'imaxct', '%s', 'abcd@qq.com')", p)
+	SQL := fmt.Sprintf("INSERT INTO test_user (`id`, `name`, `password`, `email`) "+
+		"VALUES (1, 'imaxct', '%s', 'abcd@qq.com')", p)
 
 	res, err := db.Exec(SQL)
 	if err != nil {
@@ -38,8 +43,19 @@ func insert(db *sql.DB) {
 	fmt.Printf("id: %v, rows: %v\n", maxId, rows)
 }
 
+func query(db *sql.DB) User{
+	var u User
+	r := db.QueryRow("SELECT id,name,password,email FROM test_user WHERE id=1")
+	r.Scan(&u.id, &u.name, &u.password, &u.email)
+	return u
+}
+
 func insertHandler(w http.ResponseWriter, r *http.Request) {
 	insert(db)
+}
+
+func selectHandler(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte(query(db).String()))
 }
 
 var db *sql.DB
@@ -54,5 +70,6 @@ func main() {
 	defer db.Close()
 
 	http.HandleFunc("/insert", insertHandler)
+	http.HandleFunc("/query", selectHandler)
 	log.Fatal(http.ListenAndServe(":12345", nil))
 }
