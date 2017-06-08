@@ -26,7 +26,7 @@ func insert(db *sql.DB) {
 	Hash := md5.New()
 	p := hex.EncodeToString(Hash.Sum([]byte("asdf")))
 	SQL := fmt.Sprintf("INSERT INTO test_user (`id`, `name`, `password`, `email`) "+
-		"VALUES (1, 'imaxct', '%s', 'abcd@qq.com')", p)
+		"VALUES (2, 'user01', '%s', 'abcd@qq.com')", p)
 
 	res, err := db.Exec(SQL)
 	if err != nil {
@@ -46,7 +46,14 @@ func insert(db *sql.DB) {
 func query(db *sql.DB) User{
 	var u User
 	r := db.QueryRow("SELECT id,name,password,email FROM test_user WHERE id=1")
-	r.Scan(&u.id, &u.name, &u.password, &u.email)
+	var (
+		id int
+		name string
+		password string
+		email string
+	)
+	r.Scan(&id, &name, &password, &email)
+	u = User{id, name, password, email}
 	return u
 }
 
