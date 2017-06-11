@@ -2,9 +2,17 @@ package main
 
 import (
 	"crypto/md5"
-	"fmt"
 	"encoding/hex"
+	"fmt"
 )
+
+func init() {
+	fmt.Println("init")
+}
+
+func init() {
+	fmt.Println("init b")
+}
 
 /* just basic */
 func main() {
